@@ -1,0 +1,10 @@
+#!/bin/bash
+
+domain=$(sudo yunohost app setting shaarli domain)
+
+sudo rm -rf /var/www/shaarli
+sudo rm -f /etc/nginx/conf.d/$domain.d/shaarli.conf
+sudo rm -f /etc/php5/fpm/pool.d/shaarli.conf
+
+sudo service php5-fpm restart
+sudo service nginx reload
